@@ -39,5 +39,3 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 6. **Create a superuser (admin account)**
    ```bash
    python manage.py runserver
-
-
