@@ -1,0 +1,41 @@
+{% extends "base.html"%}
+
+{% block title %}
+<title>Add Data</title>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#FEFAF6] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="bg-[#f8fafc] p-6 sm:p-8 lg:p-12 rounded-lg shadow-lg w-full max-w-lg sm:max-w-xl lg:max-w-3xl"> <!-- Increased max-width for larger screens -->
+        <div class="overflow-x-auto">
+            <form method="post" action="{% url 'adddata' %}">
+                {% csrf_token %}
+                <table class="min-w-full text-sm sm:text-base lg:text-lg"> <!-- Dynamic text size -->
+                    <!-- head -->
+                    <thead>
+                        <tr class="border-b">
+                            <th class="px-2 sm:px-4 py-2 text-left text-sm sm:text-base text-gray-600">Name</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-sm sm:text-base text-gray-600">Job</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-sm sm:text-base text-gray-600">Favorite Color</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-sm sm:text-base text-gray-600"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- rows -->
+                        <tr class="border-b">
+                            {% for input in form %}
+                            <td class="px-2 sm:px-4 py-2">
+                                {{ input }}
+                            </td>
+                            {% endfor %}
+                            <td class="px-2 sm:px-4 py-2">
+                                <button name="save" class="btn bg-green-200 text-xs sm:text-sm lg:text-base px-2 sm:px-4 py-2 text-black hover:bg-green-300">Add</button> <!-- Dynamic button size -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

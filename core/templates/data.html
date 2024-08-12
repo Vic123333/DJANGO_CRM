@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>CRM</title>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-[#FEFAF6] px-4 sm:px-6 lg:px-8"> <!-- Responsive padding for mobile -->
+    <div class="bg-white p-4 sm:p-6 rounded-lg shadow-2xl w-full max-w-4xl"> <!-- Limit width and add responsive padding -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm sm:text-lg text-black">
+                <!-- head -->
+                <thead>
+                    <tr class="border-b">
+                        <th class="px-2 sm:px-4 py-2 text-left text-black">ID</th>
+                        <th class="px-2 sm:px-4 py-2 text-left text-black">Name</th>
+                        <th class="px-2 sm:px-4 py-2 text-left text-black">Job</th>
+                        <th class="px-2 sm:px-4 py-2 text-left text-black">Favorite Color</th>
+                        <th class="px-2 sm:px-4 py-2 text-left text-black"></th>
+                    </tr>
+                </thead>
+                {% if user.is_authenticated %}
+                <tbody>
+                    <!-- rows -->
+                    {% for employee in employees %}
+                    <tr class="border-b">
+                        <th class="px-2 sm:px-4 py-2 text-left">{{ employee.id }}</th>
+                        <td class="px-2 sm:px-4 py-2 text-left">{{ employee.name }}</td>
+                        <td class="px-2 sm:px-4 py-2 text-left">{{ employee.job }}</td>
+                        <td class="px-2 sm:px-4 py-2 text-left">{{ employee.favorite_color }}</td>
+                        <td class="px-2 sm:px-4 py-2 text-left">
+                            <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0"> <!-- Stacks buttons vertically on mobile -->
+                                <a href="{% url 'singledata' employee.id %}">
+                                    <button class="btn bg-blue-300 text-black text-xs sm:text-sm px-4 py-2">edit</button>
+                                </a>
+                                <form method="post" action="{% url 'deletedata' employee.id %}">
+                                    {% csrf_token %}
+                                    <button class="btn bg-red-300 text-black text-xs sm:text-sm px-4 py-2">delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                {% endif %}
+            </table>
+        </div>
+        <a href="{% url 'adddata' %}">
+            <button class="btn bg-green-300 mt-4 sm:mt-2 text-black text-sm sm:text-base px-4 py-2">add</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

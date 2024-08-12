@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  {% block title %}
+  {% endblock %}
+</head>
+<body>
+  <div class="navbar bg-[#112D4E] text-white">
+    <div class="flex-1">
+      <a href="{% url 'core' %}" class="btn btn-ghost text-xl">CRM</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1 text-base">
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+
+  <script>
+    // Function to remove the message after a set timeout
+    function autoDismissMessages() {
+      // Select all messages with the class 'message'
+      const messages = document.querySelectorAll('.message');
+      
+      messages.forEach(message => {
+        // Set a timeout to remove the message after 3 seconds
+        setTimeout(() => {
+          message.style.opacity = '0';
+          setTimeout(() => message.remove(), 600); // Wait for the fade-out effect to complete before removing the element
+        }, 3000); // 3000 milliseconds = 3 seconds
+      });
+    }
+
+    // Call the function when the DOM content is fully loaded
+    document.addEventListener('DOMContentLoaded', autoDismissMessages);
+  </script>
+  {% for message in messages %}
+  {% if message.tags == 'error' %}
+    <div class="message p-4 mb-4 rounded-lg text-sm font-semibold bg-red-100 text-red-700">
+      {{ message }}
+    </div>
+  {% else %}
+    <div class="message p-4 mb-4 rounded-lg text-sm font-semibold bg-green-100 text-green-700">
+      {{ message }}
+    </div>
+  {% endif %}
+{% endfor %}
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

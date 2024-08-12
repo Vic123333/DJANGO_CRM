@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block title %}
+<title>Edit Data</title>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center flex-col bg-[#FEFAF6] px-4 sm:px-6 lg:px-8"> <!-- Responsive padding for mobile -->
+    <div class="p-4 sm:p-6 rounded-lg shadow-lg bg-white w-full max-w-4xl"> <!-- Limit width and add responsive padding -->
+        <div class="overflow-x-auto">
+            <form method="post" action="{% url 'singledata' employees.id %}">
+                {% csrf_token %}
+                <table class="min-w-full text-sm sm:text-lg text-black">
+                    <!-- head -->
+                    <thead>
+                        <tr class="border-b">
+                            <th class="px-2 sm:px-4 py-2 text-left text-base text-gray-600">ID</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-base text-gray-600">Name</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-base text-gray-600">Job</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-base text-gray-600">Favorite Color</th>
+                            <th class="px-2 sm:px-4 py-2 text-left text-base text-gray-600"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- rows -->
+                        <tr class="border-b">
+                            <td class="px-2 sm:px-4 py-2 font-bold text-black">{{ employees.id }}</td>
+                            {% for input in form %}
+                            <td class="px-2 sm:px-4 py-2">
+                                {{ input }}
+                            </td>
+                            {% endfor %}
+                            <td class="px-2 sm:px-4 py-2">
+                                <button name="save" class="btn bg-green-300 text-xs sm:text-sm px-4 py-2 text-black">save</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
