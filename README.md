@@ -17,7 +17,6 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 - Python 3.10
 - Django
 - SQLite (included with Python)
-- Node.js and npm (for Tailwind CSS)
 
 ### Steps
 1. **Add DJANGO_SECRET_KEY to the .env file**
