@@ -19,13 +19,12 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 - SQLite (included with Python)
 
 ### Steps
-1. **Add DJANGO_SECRET_KEY to the .env file**
-   - Use the randomsecretkey.py to create a secret key and then add it to the DJANGO_SECRET_KEY in the .env file
-
-2. **Clone the repository:**
+1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/Vic123333/DJANGO_CRUD_APP
+2. **Add DJANGO_SECRET_KEY to the .env file**
+   - Use the randomsecretkey.py to create a secret key and then add it to the DJANGO_SECRET_KEY in the .env file
 3. **Install packages**
    ```bash
    pip install django
