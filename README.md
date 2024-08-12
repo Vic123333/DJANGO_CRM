@@ -14,7 +14,7 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.10
 - Django
 - SQLite (included with Python)
 - Node.js and npm (for Tailwind CSS)
