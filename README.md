@@ -20,9 +20,25 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 - Node.js and npm (for Tailwind CSS)
 
 ### Steps
+1. **Add DJANGO_SECRET_KEY to the .env file**
+   Use the randomsecretkey.py to create a secret key and then add it to the DJANGO_SECRET_KEY in the .env file
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/django-crud-app.git
-   cd django-crud-app
+   git clone https://github.com/Vic123333/DJANGO_CRUD_APP
+2. **Install packages**
+   ```bash
+   pip install django
+   pip install python-dotenv
+3. **Apply migrations**
+   ```bash
+   python manage.py migrate
+4. **Create a superuser (admin account)**
+   ```bash
+   python manage.py createsuperuser
+4. **Create a superuser (admin account)**
+   ```bash
+   python manage.py runserver
+
+
