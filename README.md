@@ -10,6 +10,13 @@ This is a Django-based web application that provides full CRUD (Create, Read, Up
 - **Tailwind CSS**: The app is styled with Tailwind CSS, offering a modern and fully responsive design out of the box.
 - **SQLite Database**: The application uses SQLite, a lightweight and file-based database, for easy deployment and maintenance.
 
+## Screenshots
+![DJANGO_CRM](./screenshots/main.PNG)
+![DJANGO_CRM](./screenshots/login.PNG)
+![DJANGO_CRM](./screenshots/register.PNG)
+
+
+
 ## Installation
 
 ### Prerequisites
